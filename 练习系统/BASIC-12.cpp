@@ -1,14 +1,13 @@
 #include <iostream>
+#include <vector>
 #include <string>
-#include <algorithm>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
-int main()
+long long Transform(string s)
 {
-	string s;
 	long long num=0;//不超过8位
-	cin>>s;
 	reverse(s.begin(),s.end());
 	for(int i=0;i<s.length();++i)
 	{
@@ -17,6 +16,20 @@ int main()
 		else if(s[i]>='A'&&s[i]<='F')
 			num+=(s[i]-55)*pow(16,i);
 	}
-	cout<<num<<endl;
+	return num;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	vector<long long> v;
+	for(int i=0;i<n;++i)
+	{
+		string s;
+		cin>>s;
+		v.push_back(Transform(s));
+	}
+	for(int i=0;i<n;++i)
+		cout<<oct<<v[i]<<endl;
 	return 0;
 }
