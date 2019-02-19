@@ -1,3 +1,4 @@
+//https://blog.csdn.net/liuke19950717/article/details/50895142
 //f(m-1,n)+f(m,n-1),还鞋的在第一个+租鞋的在第一个
 
 #include <iostream>
