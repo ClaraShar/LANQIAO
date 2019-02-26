@@ -5,7 +5,7 @@ int main()
 {
 	int m,s,n;
 	cin>>m>>s>>n;
-	int a[m][s],b[s][n],c[m][n];
+	int a[m+1][s+1],b[s+1][n+1],c[m+1][n+1];
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;++j)
 			c[i][j]=0;
