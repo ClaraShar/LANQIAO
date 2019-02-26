@@ -1,29 +1,26 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#define max(a,b) a>b?a:b;
 using namespace std;
 
+long long int dp[16][16];
+int sum[16];
 int main()
 {
-	long long n,k,res=1,temp=0;
+	int n,k;
 	cin>>n>>k;
-	vector<long long> a;
-	for(int i=0;i<n;++i)
+	for(int i=1;i<=n;++i)
 	{
-		int num;
-		cin>>num;
-		a.push_back(num);
+		int temp;
+		cin>>temp;
+		sum[i]=sum[i-1]+temp;
 	}
-	sort(a.begin(),a.end());
-	for(int i=n-1;i>=n-k;i--)
-	{
-		if(a[i]!=0)
-			res*=a[i];
-	}
-	for(int i=0;i<n-k;i++)
-		temp+=a[i];
-	res*=temp;
-	cout<<res;
+	for(int i=1;i<=n;++i)
+		dp[i][0]=sum[i];
+	for(int i=1;i<=n;++i)//前i个数
+		for(int j=1;j<=k&&j<=i-1;++j)//乘号的个数
+			for(int t=2;t<=i;++t)//乘号的位置，在第t个数前面
+				dp[i][j]=max(dp[i][j],dp[t-1][j-1]*(sum[i]-sum[t-1]));
+	cout<<dp[n][k];
 	cin>>n;
 	return 0;
 }
